@@ -22,16 +22,17 @@ bst_t *bst_find_min(bst_t *root)
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-	bst_t *temp;
-
 	if (root == NULL)
-		return (NULL);
-	else if (value < root->n)
+		return (root);
+
+	if (value < root->n)
 		root->left = bst_remove(root->left, value);
 	else if (value > root->n)
 		root->right = bst_remove(root->right, value);
 	else
 	{
+		bst_t *temp;
+
 		if (root->left == NULL)
 		{
 			temp = root->right;
@@ -49,6 +50,5 @@ bst_t *bst_remove(bst_t *root, int value)
 		root->n = temp->n;
 		root->right = bst_remove(root->right, temp->n);
 	}
-
 	return (root);
 }
