@@ -21,7 +21,8 @@ void build_avl_tree(avl_t **node, int *array, size_t size, int side)
 	{
 		(*node)->right = binary_tree_node(*node, array[middle]);
 		build_avl_tree(&((*node)->right), array, middle, 1);
-		build_avl_tree(&((*node)->right), array + middle + 1, (size - 1 - middle), 2);
+		build_avl_tree(&((*node)->right), array + middle + 1,
+				(size - 1 - middle), 2);
 	}
 	else if (side == 1)
 	{
