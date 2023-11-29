@@ -70,7 +70,7 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	int l_height, r_height;
 
 	if (tree == NULL)
-		return (1);
+		return (0);
 
 	l_height = tree_height(tree->left);
 	r_height = tree_height(tree->right);
