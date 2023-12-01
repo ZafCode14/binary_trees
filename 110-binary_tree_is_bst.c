@@ -7,7 +7,7 @@
  *
  * Return: 1 if the tree is a valid BST, 0 otherwise
  */
-int is_bst_util(const binary_tree_t *tree, int prev)
+int is_bst_util(const binary_tree_t *tree, int *prev)
 {
 	if (tree == NULL)
 		return (1);
@@ -15,10 +15,10 @@ int is_bst_util(const binary_tree_t *tree, int prev)
 	if (!is_bst_util(tree->left, prev))
 		return (0);
 
-	if (tree->n <= prev)
+	if (tree->n <= *prev)
 		return (0);
 
-	prev = tree->n;
+	*prev = tree->n;
 
 	return (is_bst_util(tree->right, prev));
 }
@@ -36,5 +36,5 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	return (is_bst_util(tree, prev));
+	return (is_bst_util(tree, &prev));
 }
