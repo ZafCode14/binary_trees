@@ -22,7 +22,8 @@ bst_t *array_to_bst(int *array, size_t size)
 				break;
 
 		if (j == i)
-			return (bst_insert(&root, array[i]))
+			if (bst_insert(&root, array[i]) == NULL)
+				return (NULL);
 	}
 
 	return (root);
