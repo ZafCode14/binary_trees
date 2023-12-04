@@ -93,6 +93,9 @@ bst_t *bst_remove(bst_t *root, int value)
 {
 	bst_t *node;
 
+	if (root == NULL)
+		return (NULL);
+
 	node = search(root, value);
 	bst_delete(node);
 
