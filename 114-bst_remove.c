@@ -38,6 +38,21 @@ void bst_delete(bst_t *node)
 
 		free(node);
 	}
+	else if (!node->left)
+	{
+		if (parent)
+		{
+			if (parent->right == node)
+				parent->right = node->right;
+			else
+				parent->left = node->right;
+		}
+
+		if (node->right)
+			node->right->parent = parent;
+
+		free(node);
+	}
 	else
 	{
 		successor = find_successor(node->right);
